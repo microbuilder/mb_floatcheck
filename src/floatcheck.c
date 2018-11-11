@@ -19,3 +19,92 @@
 
 #include <ctype.h>
 #include "floatcheck/floatcheck.h"
+
+bool
+d_is_equal(double a, double b, double epsilon, char *msg)
+{
+    double c;
+
+    c = a - b;
+
+    if (c < epsilon && -c < epsilon) {
+        return 1;
+    } else {
+        printf("Double Err: %s\n"
+               " Expected: %f\n"
+               " Received: %f\n"
+               "    DELTA: %f\n"
+               "  Epsilon: %f\n",
+               msg, b, a, c, epsilon);
+        return 0;
+    }
+}
+
+bool
+d_is_at_least(double a, double b, char *msg)
+{
+    if (a >= b) {
+        return 1;
+    } else {
+        printf("Double Err: %s\n"
+               " Expected: >= %f\n"
+               " Received: %f\n"
+               "    DELTA: %f\n",
+               msg, b, a, a-b);
+        return 0;
+    }
+}
+
+bool
+d_is_less_than(double a, double b, char *msg)
+{
+    if (a < b) {
+        return 1;
+    } else {
+        printf("Double Err: %s\n"
+               " Expected: < %f\n"
+               " Received: %f\n"
+               "    DELTA: %f\n",
+               msg, b, a, a-b);
+        return 0;
+    }
+}
+
+bool
+d_is_greater_than(double a, double b, char *msg)
+{
+    if (a > b) {
+        return 1;
+    } else {
+        printf("Double Err: %s\n"
+               " Expected: > %f\n"
+               " Received: %f\n"
+               "    DELTA: %f\n",
+               msg, b, a, a-b);
+        return 0;
+    }
+}
+
+/**
+ * Checks if a double is within the range of 'upper' and 'lower'.
+ *
+ * @param a         The value to check
+ * @param upper     The upper value to compare against (inclusive)
+ * @param lower     The lower value to compare against (inclusive)
+ * @msg             The function requesting the comparison (for log purposes)
+ *
+ * @return  True if value is less than 'b', otherwise false.
+ */
+bool
+d_is_within(double a, double upper, double lower, char *msg)
+{
+    if ((a <= upper) || (a >= lower)) {
+        return 1;
+    } else {
+        printf("Double Err: %s\n"
+               " Expected: <= %f || >= %f\n"
+               " Received: %f\n"
+               msg, upper, lower, a);
+        return 0;
+    }
+}
