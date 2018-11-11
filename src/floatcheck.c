@@ -23,7 +23,7 @@
 bool
 f_is_equal(float a, float b, float epsilon, char *msg)
 {
-    double c;
+    float c;
 
     c = a - b;
 
