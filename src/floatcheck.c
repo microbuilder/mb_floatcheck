@@ -103,7 +103,7 @@ d_is_within(double a, double upper, double lower, char *msg)
     } else {
         printf("Double Err: %s\n"
                " Expected: <= %f || >= %f\n"
-               " Received: %f\n"
+               " Received: %f\n",
                msg, upper, lower, a);
         return 0;
     }
