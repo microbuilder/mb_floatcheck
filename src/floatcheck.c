@@ -21,6 +21,26 @@
 #include "floatcheck/floatcheck.h"
 
 bool
+f_is_equal(float a, float b, float epsilon, char *msg)
+{
+    double c;
+
+    c = a - b;
+
+    if (c < epsilon && -c < epsilon) {
+        return 1;
+    } else {
+        printf("Float Err: %s\n"
+               " Expected: %f\n"
+               " Received: %f\n"
+               "    DELTA: %f\n"
+               "  Epsilon: %f\n",
+               msg, b, a, c, epsilon);
+        return 0;
+    }
+}
+
+bool
 d_is_equal(double a, double b, double epsilon, char *msg)
 {
     double c;

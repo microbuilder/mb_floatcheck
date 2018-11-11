@@ -27,6 +27,19 @@ extern "C" {
 #endif
 
 /**
+ * Checks if a float is equal to the specified value, with a +/- margin of
+ * 'epsilon'.
+ *
+ * @param a         The value to check
+ * @param b         The value to compare against
+ * @param b         The +/- margin for equality
+ * @msg             The function requesting the comparison (for log purposes)
+ *
+ * @return  True if value is greater than or equal to 'b', otherwise false.
+ */
+bool f_is_equal(float a, float b, float epsilon, char *msg);
+
+/**
  * Checks if a double is equal to the specified value, with a +/- margin of
  * 'epsilon'.
  *
